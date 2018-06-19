@@ -1,0 +1,265 @@
+%!TEX program = xelatex
+%
+% ================================================================
+%	Tipo de dissertação:
+%		escolher entre "doutoramento" ou "mestrado"
+%
+%	Área científica:
+%		escolher entre
+%			- "ct" (ciências e tecnologia, final); "ctR" (ciências e tecnologia, rascunho);
+%			- "csh" (ciências sociais e humanas, final); "cshR" (ciências sociais e humanas, rascunho);
+%			- "artes" (artes, final); "artesR" (artes, rascunhos)
+%
+% ================================================================
+%
+\documentclass[mestrado,ct,12pt]{teseue}
+%
+%
+% ================================================================
+%	DOCUMENTO:
+%		 
+%		Língua, Título, Nome do Candidato, Curso, etc
+%		Estrutura
+% ================================================================
+%
+% ----------------------------------------------------------------
+%
+%	LÍNGUA DA TESE
+%
+%	Opções atuais:
+%	- PT: Português (novo acordo ortográfico)
+%	- EN: Inglês
+%
+\tueLINGUA{EN}
+%
+% ----------------------------------------------------------------
+%
+%	TÍTULO DA TESE
+%
+%	Em Português e Inglês.
+%
+\tueTITULO
+{Forense Digital Utilizando Programação por Restrições}
+{Digital Forensics Using Constraint Programming}
+%
+% ----------------------------------------------------------------
+%
+%	SUBTÍTULO DA TESE
+%
+%	Em Português e Inglês.
+%
+\tueSUBTITULO
+{}
+{}
+%
+% ----------------------------------------------------------------
+%
+%	CANDIDATO
+%
+%	Nome completo.
+%		
+\tueCANDIDATO
+{João Calhau}
+%
+% ----------------------------------------------------------------
+%
+%	TÍTULO E NOME DO/A ORIENTADOR/A
+%
+%	Designação oficial e nome do orientador/a.
+%	Em geral, "Orientador" ou "Orientadora".
+%
+\tueORIENTADOR
+{Orientador}
+{Pedro Salgueiro}
+%
+% ----------------------------------------------------------------
+%
+%	SEGUNDO ORIENTADOR/A (se aplicável)
+%
+%	Designação oficial e nome do segundo orientador/a.
+%	Em geral, "Co-orientador" ou "Co-orientadora".
+%
+\tueSEGUNDOORIENTADOR
+{Orientador}
+{Salvador Abreu}
+%
+% ----------------------------------------------------------------
+%
+%	TERCEIRO ORIENTADOR/A (se aplicável)
+%
+%	Designação oficial e nome do terceiro orientador/a.
+%	Em geral, "Co-orientador" ou "Co-orientadora".
+%
+\tueTERCEIROORIENTADOR
+{Co-orientador}
+{Nuno Goes}
+%
+% ----------------------------------------------------------------
+%
+%	CURSO
+%
+%	Nome do curso em que se enquadra esta tese.
+%
+\tueCURSO
+{Computer Science Engineering}
+%
+% ----------------------------------------------------------------
+%
+%	ESPECIALIDADE (se aplicável)
+%
+%	Nome da especialidade em que se enquadra esta tese.
+%
+\tueESPECIALIDADE
+{Security}
+%
+% ----------------------------------------------------------------
+%
+%	DEPARTAMENTO
+%
+%	Departamento anfitrião do curso.
+%
+\tueDEPARTAMENTO
+{Departamento de Administração Pública}
+%
+% ----------------------------------------------------------------
+%
+%	ESCOLA
+%
+%	Escola a que pertence o departamento.
+%
+\tueESCOLA
+{Escola de Coordenação Nacional}
+%
+% ----------------------------------------------------------------
+%
+%	PALAVRAS CHAVE
+%
+%	Data de submissão da tese.
+%
+\tuePALAVRASCHAVE
+{Forense Digital, Programação por Restrições, Segurança, Programação Declarativa}
+{Digital Forensics, Constraint Programming, Security, Declarative Programming}
+%
+% ----------------------------------------------------------------
+%
+%	DATA
+%
+%	Data de submissão da tese.
+%
+\tueDATA
+{\today}
+%
+% ----------------------------------------------------------------
+%
+%	DEDICATÓRIA
+%
+\tueDEDICATORIA
+{Aos eternos insatisfeitos.}
+%
+% ----------------------------------------------------------------
+%
+%	PREAMBULO
+%
+%	Comandos e definições para o LaTeX que devem estar **antes**
+%	do texto do documento.
+%
+\tuePREAMBULOLATEX{
+	\usepackage[figureright]{rotating}
+}
+%
+% ----------------------------------------------------------------
+%
+%	PREAMBULO
+%
+%	Texto até à página 1. 
+%
+%	Por omissão os conteúdos estão definidos nos ficheiros
+%		- prefacio.tex
+%		- agradecimentos.tex
+%		- acronimos.tex
+%		- sumario.tex
+%		- abstract.tex
+%
+%\tuePREAMBULO {}
+%
+% ----------------------------------------------------------------
+%
+%	CONTEÚDO
+%
+%	Texto principal da tese.
+%
+\tueCONTEUDO  % A partir da página 1
+{
+	\include{demo-cap-1}
+	\include{demo-cap-2}
+	\include{demo-cap-3}
+}
+%
+% ----------------------------------------------------------------
+%
+%	APÊNDICES
+%
+%	Texto complementar da tese.
+%
+\tueAPENDICES % Material de suporte
+{
+	\include{demo-apend-1}
+	\include{demo-apend-2}
+}
+%
+% ----------------------------------------------------------------
+%
+%	BIBLIOGRAFIA
+%
+%	Por omissão...
+%	- usa BibTex
+%	- com o estilo "alpha"
+%	- consulta o ficheiro "bibliografia.tex"
+%	- lista **todas** as obras, mesmo que não referenciadas no texto da tese
+%
+%\tueBIBLIOGRAFIA{}
+%
+% ----------------------------------------------------------------
+%
+%	ÍNDICE REMISSIVO
+%
+%\tueINDICEREMISSIVO{}
+%
+% ----------------------------------------------------------------
+%
+% ================================================================
+%
+%	Modo ORGANIZAÇÃO DA DISSETAÇÃO COMPLETA.
+%
+%	Prevê que
+%		- a informação sobre título, autor, orientadores, etc está definida acima e que
+%		- a obra tem a seguinte estrutura:
+%
+%			prefácio
+%			agradecimentos
+%			tabela de conteúdos
+%			lista de figuras
+%			lista de tabelas
+%			lista de acrónimos
+%			sumário
+%			tradução do sumário
+%			------------------------------
+%			CONTEÚDO (vários capítulos)
+%			APÊNDICES (vários capítulos)
+%			------------------------------
+%			bibliografia
+%			índice remissivo
+%
+% ================================================================
+%
+\tueDOCUMENTO
+%
+% ================================================================
+%	Modo CAPA, CONTRA-CAPA e LOMBADAS.
+%
+%	Prevê que a informação sobre título, autor, orientadores, etc está definida acima.
+%
+% ================================================================
+%
+%\tueCAPAS
+
