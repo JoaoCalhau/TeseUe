@@ -6,7 +6,3 @@ main: main.tex
 clean:
 	@$(RM) *.aux
 	@$(RM) main.pdf main.lof main.lot main.toc main.log
-
-all: 
-	$(main) 
-	$(clean)
