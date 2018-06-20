@@ -12,7 +12,12 @@
 %
 % ================================================================
 %
-\documentclass[mestrado,ctR,12pt]{teseue}
+\documentclass[mestrado,ct,12pt]{teseue}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\def\INODE{Inode }
+\def\INODES{Inodes }
 %
 %
 % ================================================================
@@ -39,8 +44,8 @@
 %	Em Português e Inglês.
 %
 \tueTITULO
-{Forense Digital Utilizando Programação por Restrições}
 {Digital Forensics Using Constraint Programming}
+{Forense Digital Utilizando Programação por Restrições}
 %
 % ----------------------------------------------------------------
 %
@@ -91,7 +96,7 @@
 %	Em geral, "Co-orientador" ou "Co-orientadora".
 %
 \tueTERCEIROORIENTADOR
-{Co-orientador}
+{Orientador}
 {Nuno Goes}
 %
 % ----------------------------------------------------------------
@@ -101,7 +106,7 @@
 %	Nome do curso em que se enquadra esta tese.
 %
 \tueCURSO
-{Computer Science Engineering}
+{Engenharia Informática}
 %
 % ----------------------------------------------------------------
 %
@@ -109,8 +114,8 @@
 %
 %	Nome da especialidade em que se enquadra esta tese.
 %
-\tueESPECIALIDADE
-{Security}
+%\tueESPECIALIDADE
+%{}
 %
 % ----------------------------------------------------------------
 %
@@ -119,7 +124,7 @@
 %	Departamento anfitrião do curso.
 %
 \tueDEPARTAMENTO
-{Departamento de Administração Pública}
+{Departamento de Informática}
 %
 % ----------------------------------------------------------------
 %
@@ -128,7 +133,7 @@
 %	Escola a que pertence o departamento.
 %
 \tueESCOLA
-{Escola de Coordenação Nacional}
+{Escola de Ciências e Tecnologia}
 %
 % ----------------------------------------------------------------
 %
@@ -137,8 +142,8 @@
 %	Data de submissão da tese.
 %
 \tuePALAVRASCHAVE
-{Forense Digital, Programação por Restrições, Segurança, Programação Declarativa}
 {Digital Forensics, Constraint Programming, Security, Declarative Programming}
+{Forense Digital, Programação por Restrições, Segurança, Programação Declarativa}
 %
 % ----------------------------------------------------------------
 %
@@ -154,7 +159,7 @@
 %	DEDICATÓRIA
 %
 \tueDEDICATORIA
-{Aos eternos insatisfeitos.}
+{Nothing yet.}
 %
 % ----------------------------------------------------------------
 %
@@ -190,9 +195,12 @@
 %
 \tueCONTEUDO  % A partir da página 1
 {
-	\include{demo-cap-1}
-	\include{demo-cap-2}
-	\include{demo-cap-3}
+	\include{cap-1}
+	\include{cap-2}
+	\include{cap-3}
+	\include{cap-4}
+	\include{cap-5}
+	\include{cap-6}
 }
 %
 % ----------------------------------------------------------------
@@ -201,11 +209,11 @@
 %
 %	Texto complementar da tese.
 %
-\tueAPENDICES % Material de suporte
-{
-	\include{demo-apend-1}
-	\include{demo-apend-2}
-}
+%\tueAPENDICES % Material de suporte
+%{
+%	\include{demo-apend-1}
+%	\include{demo-apend-2}
+%}
 %
 % ----------------------------------------------------------------
 %
@@ -217,7 +225,7 @@
 %	- consulta o ficheiro "bibliografia.tex"
 %	- lista **todas** as obras, mesmo que não referenciadas no texto da tese
 %
-%\tueBIBLIOGRAFIA{}
+\tueBIBLIOGRAFIA{}
 %
 % ----------------------------------------------------------------
 %

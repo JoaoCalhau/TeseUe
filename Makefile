@@ -1,7 +1,7 @@
 TEX = xelatex
 
 main: main.tex
-	$(TEX) -interaction=nonstopmode -halt-on-error $^
+	$(TEX) $^
 
 clean:
 	@$(RM) *.aux

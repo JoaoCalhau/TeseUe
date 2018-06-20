@@ -1,0 +1,24 @@
+%!TEX root = main.tex
+\chapter{Constraint Programming}
+
+\section{Introduction}
+
+\section{History of Constraint Programming}
+
+\section{Approaches to Constraint Programming}
+
+In constraint programming, we usually have a set of variables, which takes values from an initial domain, to which constraints are applied in order to reduce its domain, and thus reach a solution. Once a constraint is placed on the system it cannot violate another constraint previously applied. This way, we can express the requirements of the possible values of the variables~\cite{Pearson1997}.
+
+Constraint satisfaction problems are typically solved with the help of solvers. These solvers are essentially search algorithms, usually based on backtracking techniques\cite{Knuth1997}, constraint propagation \cite{Lecoutre2010} or local search \cite{Dechter2003}. 
+
+\subsection{Backtracking}
+
+Backtracking is a search method that incrementally finds possible candidates to solve the problem. At the same time it removes the candidates that can not be used as a valid solution to the problem~\cite{Knuth1997}. One of the most used examples for this type of search method is the n-queens puzzle, where a set of $n$ queens should be organized, in a $n \times n$ chess board, in such a way that none of the queens can attack each other. Any partial solution that contains two queens that can attack each other is abandoned immediately.
+
+\subsection{Constraint Propagation}
+
+Constraint propagation starts by reducing the variable's domain, strengthening or creating new constraints, reducing the search space, leading to a problem that is easier to solve. Since this algorithm only reduces the search space of the problem variables. After completion, there is still the need to use another algorithm to solve the problem, which is now converted into a simpler problem by the propagators \cite{Lecoutre2010}. 
+
+\subsection{Local Search}
+
+Local search is an incomplete search method to find solutions for a problem. It consists in, iteratively, and with the help of previously defined heuristics, assigning values to the problem variables until all the constraints are satisfied. At each step of the iteration, the values of the variables are updated to values \emph{near} the previous value. The algorithm also knows the cost associated with the assignment of specific values to variables, allowing to check if a candidate solution has with a pre-defined cost~\cite{Dechter2003}.
