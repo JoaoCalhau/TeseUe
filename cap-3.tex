@@ -13,20 +13,14 @@ To collect evidence or data in digital equipment, there are many tools capable o
 
 In this section we introduce the practical aspects of constraint programming including some libraries and toolkits that are used to model and solve constraint problems. We also describe similar work already done in this area.
 
-\subsection{Choco}
+\subsection{EnCase}
 
-Choco is an open source and free access library dedicated to constraint programming. It is written in Java and supports several types of variables, including Integers, Booleans, Sets and Reals. It also supports several types of constraints such as AllDifferent and Count, configurable search algorithms and conflict explaining. The first version of Choco was developed in the early 2000s. A few years later, Choco 2 was developed and declared a success in the academic and industrial world. Since then, Choco has been completely re-written and in 2012 the third version of Choco was launched. The current version comes with a simpler API and is denominated Choco 4~\cite{chocoSolver}.
+\subsection{Forensic ToolKit (FTK)}
 
-\subsection{Gecode}
-
-Gecode is a free access, open source, portable, accessible and efficient programming environment used to develop systems and applications based on restrictions. Gecode, much like Choco, supports various types of variables and restrictions, among them are Integers, Float and Sets. These variables are used to model problems that are then solved with the help of constraint propagators and search algorithms \cite{MPG:M:5.1.0}~\cite{gecode}.
-
-\subsection{Google OR-Tools}
-
-Although Choco and Gecode are two of the most widely used libraries, there are also other new tools, such as the Google OR-Tools~\cite{ORTools}. Google Optimization Tools or OR-Tools is an interface that puts together several linear programming solver and that counts on the use of several types of algorithms such as search algorithms and graph algorithms. What this library has that is so noteworthy is the fact that it doesn't let itself be bound by one language. Although implemented in C++, it can be used in other languages like Python, C\# or Java.
-
-\subsection{The Sleuth Kit}
+\subsection{The Sleuth Kit and Autopsy}
 
 The Sleuth Kit is a C library and a collection of tools that allows to analyze disc images and restore files from it. The Sleuth Kit is what Autopsy~\cite{Autopsy}, the forensics tool mentioned earlier, uses in it's background jobs. The Sleuth Kit framework allows the user to incorporate additional modules so he can analyze file contents and build automated systems. In addition, the library can be embedded in larger digital forensics tools and command line tools can be used directly to find any kind of proof~\cite{tsk}. 
 
 Of all the tools The Sleuth Kit has to offer, the most interesting to help us in the type of problem we're trying to solve is the Sorter, which analyzes a file system and organizes what it finds by extension of file. In addition, it provides us details about the organized files, such as the file \INODE number. The Sorter can also use a separate hash database to ignore files that are known to be good, such as Dynamic-Link Libraries, or dlls, of the windows file system or even know applications.
+
+

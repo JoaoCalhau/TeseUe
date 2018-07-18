@@ -33,3 +33,17 @@ Constraint propagation starts by reducing the variable's domain, strengthening o
 \subsection{Local Search}
 
 Local search is an incomplete search method to find solutions for a problem. It consists in, iteratively, and with the help of previously defined heuristics, assigning values to the problem variables until all the constraints are satisfied. At each step of the iteration, the values of the variables are updated to values \emph{near} the previous value. The algorithm also knows the cost associated with the assignment of specific values to variables, allowing to check if a candidate solution has with a pre-defined cost~\cite{Dechter2003}.
+
+\section{Known Tools and Other Approaches}
+
+\subsection{Choco}
+
+Choco is an open source and free access library dedicated to constraint programming. It is written in Java and supports several types of variables, including Integers, Booleans, Sets and Reals. It also supports several types of constraints such as AllDifferent and Count, configurable search algorithms and conflict explaining. The first version of Choco was developed in the early 2000s. A few years later, Choco 2 was developed and declared a success in the academic and industrial world. Since then, Choco has been completely re-written and in 2012 the third version of Choco was launched. The current version comes with a simpler API and is denominated Choco 4~\cite{chocoSolver}.
+
+\subsection{Gecode}
+
+Gecode is a free access, open source, portable, accessible and efficient programming environment used to develop systems and applications based on restrictions. Gecode, much like Choco, supports various types of variables and restrictions, among them are Integers, Float and Sets. These variables are used to model problems that are then solved with the help of constraint propagators and search algorithms \cite{MPG:M:5.1.0}~\cite{gecode}.
+
+\subsection{Google OR-Tools}
+
+Although Choco and Gecode are two of the most widely used libraries, there are also other new tools, such as the Google OR-Tools~\cite{ORTools}. Google Optimization Tools or OR-Tools is an interface that puts together several linear programming solver and that counts on the use of several types of algorithms such as search algorithms and graph algorithms. What this library has that is so noteworthy is the fact that it doesn't let itself be bound by one language. Although implemented in C++, it can be used in other languages like Python, C\# or Java.
