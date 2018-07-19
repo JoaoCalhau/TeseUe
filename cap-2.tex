@@ -3,15 +3,35 @@
 
 \section{Introduction}
 
-Constraint Satisfaction, basically, consists in finding a value for each one of a set of problems where constraints specify the restrictions related to those problems.
+Constraint Satisfaction, in it's most basic form, consists in finding a value for each one of a set of problems where constraints specify the restrictions related to those problems.
 
-Constraint Satisfaction Problems have been tackled by the most various methods, frtom automata theory to ant algorithms and are a topic of interes in many field of computer science and beyond~\cite{Rossi2006}.
+Constraint Satisfaction Problems have been tackled by the most various methods, from automata theory to ant algorithms and are a topic of interest in many fields of computer science~\cite{Rossi2006}.
 
-\section{History of Constraint Satisfaction}
+\section{History of Constraint Programming}
 
-Constraint Satisfaction originaly appeared in the field of artificial intelligence in the early 70s. And during the 80s and 90s constraints started being embedded into programming languages, as they were being developed, examples of these languages are \textbf{Prolog} and \textbf{C++}~\cite{Krzysztof2003}.
+Before understanding what constraint programming is we need to understand that Constraint Satisfaction is the process of finding a solution to a set of constraints that impose conditions that the variables must satisfy~\cite{Krzysztof2003}. A solution is found when a set of variables satisfies all constrains. These constraints and variables will be explained in deeper detail later in section~\ref{working}.
+
+Constraint Satisfaction originally appeared in the field of artificial intelligence in the early 1970s. During the 1980s and 1990s constraints started being embedded into programming languages, as they were being developed, and the term constraint programing started taking form. Examples of these programming languages are \textit{Prolog} and \textit{C++}~\cite{Krzysztof2003}.
 
 In artificial intelligence interest in constraint satisfaction developed into two streams, the language stream and the algorithm stream. The first stream refers to the side of Constraint Satisfaction that deals with algebraic equations, constraint statements and declarative languages, while the second stream refers to actual algorithms used to solve said constrains~\cite{Rossi2006}.
+
+\section{Working with Constraint Programming}
+\label{working}
+
+There are several definitions we have to delve into to better understand how constraint programming works. We need to fully understand what a domain and a variable is and we also need to know what a constraint is.
+
+\subsection{Variable}
+\label{variable}
+
+A variable has several known definitions, the one we want is in the field of mathematics. According to mathematics a variable is a symbol, usually an alphabetic character, and it represents a number, known as the value of the variable, which can be arbitrary, not fully specified or unknown~\cite{Menger1954}.
+
+\subsection{Domain}
+
+A domain, like the variable, also has various known definitions, however the one that interests us here is in the field of mathematical analysis. 
+
+According to Hans Hahn, an open set is connected if it cannot be expressed as the sum of two open sets. An open connected set is called a domain~\cite{Hahn1921} 
+
+In our case, a domain is an open connected set of variables.
 
 \section{Approaches to Constraint Programming}
 
