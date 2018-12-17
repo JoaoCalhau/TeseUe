@@ -1,42 +1,131 @@
 %!TEX root = main.tex
 \chapter{Experimental Evaluation}
 
+In this chapter we are going to talk about the results of the experimental evaluation of the initial program phase. At the same time, we will also present the results of the experimental evaluation of the current development phase.
+
 \section{Introduction}
 
-\section{Experimental Results}
+This chapter presents the experimental results that resulted from two distinct program phases, the initial phase and the current phase. Along with the experimental results, we also present the method through which we extracted the disk images used in said experiments along with a few notes depicting what we could conclude from those results.
 
-To evaluate the system, we used device images from different sources that claim their images are for the testing of forensics computer tools, Digital Corpora~\cite{DCorpora} and Linux LEO~\cite{LinuxLEO}. The images taken from Digital Corpora are two, one from a Canon camera, code named "canon2" and the other a bootable USB disk with a ext3 Ubuntu file system installed, code named "casper". From Linux LEO one image was taken, an Able2 Ext2 disk image, code named "able2".
+\section{Initial Experimental Results}
 
-\begin{table}
+To evaluate the initial system, we used device images from personal items, including a USB pen drive and an SD card that came from a smartphone. To safely extract and analyze the images from these devices, we used \ac{FTK}. After acquiring the images, they were processed with the \ac{TSK} toolkit sorter to extract their information. They were then sorted into their respective structures and analyzed with the tool developed in the context of this work. The USB pen drive and SD card images have a 4GB and 32GB total size, respectively.
+
+\begin{table}[ht]
     \centering
-    \begin{tabular}{|p{3cm}||p{1cm}|p{1.5cm}|p{1cm}|p{3.5cm}|p{1.5cm}|}
+    \begin{tabular}{|p{3cm}||p{1cm}|p{2cm}|p{1.5cm}|p{3cm}|}
         \hline
-        Device Name & Times (sec.) & Total \INODES & Found \INODES & Constraints & Caching \\
+        Device Name & Time (sec.) & Total \INODES & Found \INODES & Constraints \\
         \hline
-        Canon2  & 1.6 & 38 & 33 & type, path & no  \\
-        Canon2  & 1.0 & 38 & 33 & type, path & yes \\
-        Canon2  & 1.8 & 38 & 33 & type, path, date & no \\
-        Canon2  & 0.6 & 38 & 33 & type, path, date & yes \\
-        Canon2  & 1.4 & 38 & 33 & type, path, date, word & no \\
-        Canon2  & 0.6 & 38 & 33 & type, path, date, word & yes \\
+        Pen Drive & 0.343 & 113 & 2 & type \\
+        Pen Drive & 0.345 & 113 & 6 & path \\
+        Pen Drive & 0.387 & 113 & 1 & type, path \\
         \hline
-        Casper  & 2.6 & 1079 & 4 & type, path & no  \\
-        Casper  & 0.5 & 1079 & 4 & type, path & yes \\
-        Casper  & 2.7 & 1079 & 4 & type, path, date & no \\
-        Casper  & 0.7 & 1079 & 4 & type, path, date & yes \\
-        Casper  & 2.7 & 1079 & 4 & type, path, date, word & no \\
-        Casper  & 0.7 & 1079 & 4 & type, path, date, word & yes \\
-        \hline
-        Able2 Partition 3 & 88.2 & 11653 & 12 & type, path & no  \\
-        Able2 Partition 3 & 0.7  & 11653 & 12 & type, path & yes \\
-        Able2 Partition 3 & 66.4 & 11653 & 12 & type, path, date & no  \\
-        Able2 Partition 3 & 1.1  & 11653 & 12 & type, path, date & yes \\
-        Able2 Partition 3 & 61.8 & 11653 & 12 & type, path, date, word & no  \\
-        Able2 Partition 3 & 1.1  & 11653 & 12 & type, path, date, word & yes \\
+        SD Card  & 36.081 & 3060 & 1758 & type \\
+        SD Card  & 28.364 & 3060 & 6 & path \\
+        SD Card  & 24.905 & 3060 & 6 & type, path \\
         \hline
     \end{tabular}
-    \caption{Experimental Results}
+    \caption{Initial Experimental Results}
+    \label{tab:old_results}
+\end{table}
+
+The initial evaluation results are presented in table~\ref{tab:old_results}, which describes the elapsed time to reach a solution in seconds, the total number of files present in the device, number of \INODES Found that match the modeled \ac{DFP} and the constraints used to model the problem. 
+
+We can note that, in this version of the tool, time scaled really poorly with the amount of \INODES to process. This is due to the fact that each time we want to process the \INODES with the tool, they need to be passed primarily through each data structure, which are only located in-memory, and then processed with Choco Solver. This process is a lengthy one, even more so with an increase in \INODE quantities, a number that in a real world scenario could be in the thousands.
+
+Note that in this early version of the program there were no date and word search propagators, so they are not present in this test. Also no caching system existed, that is why it is not mentioned either.
+
+
+The constraints used for the pen drive, from top to bottom, are as follow:
+\begin{itemize}
+    \item 1st test: File type was "Unknown".
+    \item 2nd test: File path was "LVOC/LVOC".
+    \item 3rd test: File type was "Unknown" and file path was "LVOC/LVOC".
+\end{itemize}
+
+The constraints used for the SD card, from top to bottom, are as follow:
+\begin{itemize}
+    \item 1st test: File type was "Audio".
+    \item 2nd test: File path was "Music/Disturbed".
+    \item 3rd test: File type was "Audio" and file path was "Music/Disturbed". 
+\end{itemize}
+
+\section{Current Experimental Results}
+
+To evaluate the final version of the tool developed in the context of this work, we used device images from different sources such as, Digital Corpora~\cite{DCorpora} and Linux LEO~\cite{LinuxLEO}. The images taken from Digital Corpora are two, one from a Canon camera, code named "canon2" and the other a bootable USB disk with a ext3 Ubuntu file system installed, code named "casper". From Linux LEO one image was taken, an Able2 Ext2 disk image, code named "able2".
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|p{3cm}||p{1cm}|p{2cm}|p{1.5cm}|p{3.5cm}|p{1.5cm}|}
+        \hline
+        Device Name & Time (sec.) & Total \INODES & Found \INODES & Constraints & Caching \\
+        \hline
+        Canon2  & 0.745 & 38 & 33 & type & no  \\
+        Canon2  & 0.677 & 38 & 33 & type & yes \\
+        Canon2  & 1.254 & 38 & 36 & path & no  \\
+        Canon2  & 0.836 & 38 & 36 & path & yes \\
+        Canon2  & 0.942 & 38 & 33 & type, path & no \\
+        Canon2  & 0.932 & 38 & 33 & type, path & yes \\
+        Canon2  & 0.911 & 38 & 33 & type, path, date & no \\
+        Canon2  & 0.667 & 38 & 33 & type, path, date & yes \\
+        Canon2  & 0.983 & 38 & 33 & type, path, date, word & no \\
+        Canon2  & 0.930 & 38 & 33 & type, path, date, word & yes \\
+        \hline
+        Casper  & 1.473 & 1079 & 79 & type & no  \\
+        Casper  & 0.865 & 1079 & 79 & type & yes \\
+        Casper  & 1.782 & 1079 & 5 & path & no  \\
+        Casper  & 0.901 & 1079 & 5 & path & yes \\
+        Casper  & 1.675 & 1079 & 4 & type, path & no \\
+        Casper  & 0.819 & 1079 & 4 & type, path & yes \\
+        Casper  & 1.482 & 1079 & 4 & type, path, date & no \\
+        Casper  & 0.767 & 1079 & 4 & type, path, date & yes \\
+        Casper  & 1.632 & 1079 & 4 & type, path, date, word & no \\
+        Casper  & 0.752 & 1079 & 4 & type, path, date, word & yes \\
+        \hline
+        Able2 Partition 3  & 29.539 & 11653 & 14 & type & no  \\
+        Able2 Partition 3  & 0.974 & 11653 & 14 & type & yes \\
+        Able2 Partition 3  & 37.010 & 11653 & 66 & path & no  \\
+        Able2 Partition 3  & 0.924 & 11653 & 66 & path & yes \\
+        Able2 Partition 3  & 28.334 & 11653 & 12 & type, path & no \\
+        Able2 Partition 3  & 0.881 & 11653 & 12 & type, path & yes \\
+        Able2 Partition 3  & 26.858 & 11653 & 12 & type, path, date & no \\
+        Able2 Partition 3  & 0.862 & 11653 & 12 & type, path, date & yes \\
+        Able2 Partition 3  & 28.584 & 11653 & 2 & type, path, date, word & no \\
+        Able2 Partition 3  & 0.885 & 11653 & 2 & type, path, date, word & yes \\
+        \hline
+    \end{tabular}
+    \caption{Actual Experimental Results}
     \label{tab:results}
 \end{table}
 
-The evaluation results are presented in Table~\ref{tab:results}, which describes the elapsed time to reach a solution in seconds, the total number of files present in the device, number of \INODES found that match the modeled Digital Forensics problem, the constraints used to model the problem and if the caching system was used, for each experiment.
+The actual evaluation results are presented in table~\ref{tab:results}, which describes the elapsed time to reach a solution in seconds, the total number of files present in the device, number of \INODES found that match the modeled Digital Forensics problem, the constraints used to model the problem and if the caching system was used, for each experiment.
+
+When comparing the two experimental results we can clearly see that the current version of the tool is quite a bit faster than the first implementation, of course this is due to the fact that there is no need to store the \INODES in various structures. This implementation is both faster in terms of processing speed and data persistence, of course these times could be minimized even further if we implemented a database that made use of a faster search method, like for example elastisearch. 
+
+The constraints used for the canon2 image, from top to bottom, are as follow:
+\begin{itemize}
+    \item 1st and 2nd tests: File type was "Image".
+    \item 3rd and 4th tests: File path was "DCIM/100CANON".
+    \item 5th and 6th tests: File type was "Image" and file path was "DCIM/100CANON".
+    \item 7th and 8th tests: File type was "Image", file path was "DCIM/100CANON" and file date was "2018-01-01" and onwards.
+    \item 9th and 10th tests: File type was "Image", file path was "DCIM/100CANON", file date was "2018-01-01" and onwards and word to look for was ."IMG".
+\end{itemize}
+
+The constraints used for the casper image, from top to bottom, are as follow:
+\begin{itemize}
+    \item 1st and 2nd tests: File type was "Documents".
+    \item 3rd and 4th tests: File path was "home/ubuntu/Documents/ssa.gov".
+    \item 5th and 6th tests: File type was "Documents" and file path was "home/ubuntu/Documents/ssa.gov".
+    \item 7th and 8th tests: File type was "Documents", file path was "home/ubuntu/Documents/ssa.gov" and file date was "2008-12-30" and onwards.
+    \item 9th and 10th tests: File type was "Documents", file path was "home/ubuntu/Documents/ssa.gov", file date was "2008-12-30" and onwards and word to look for was "pdf".
+\end{itemize}
+
+The constraints used for the able2 partition 3 image, from top to bottom, are as follow:
+\begin{itemize}
+    \item 1st and 2nd tests: File type was "Archive".
+    \item 3rd and 4th tests: File path was "lib".
+    \item 5th and 6th tests: File type was "Archive" and file path was "lib".
+    \item 7th and 8th tests: File type was "Archive", file path was "lib" and file date was "2000-01-01" and onwards.
+    \item 9th and 10th tests: File type was "Archive", file path was lib", file date was "2000-01-01" and onwards and word to look for was "libc".
+\end{itemize}

@@ -1,22 +1,33 @@
 %!TEX root = main.tex
 \chapter{Introduction and Motivation}
 
+This Chapter briefly introduces all the different topics presented in this dissertation as well as the different tools and techniques used in them.
+
 \section{Introduction}
 
-Digital forensics is a complex task that consists in analyzing large amounts of data, that can come from the most various digital sources, with a multitude of different tools.
+This dissertation is about a declarative approach to \acfp{DFP}, that relies on the constraint programming paradigm to both describe and solve a given \acf{DFP}, which in turn allows to find digital evidences that might be related with criminal activities.
 
-In this work we present a system that makes use of the constraint programming paradigm and methods to solve digital forensics problems. Through the use of constraint programming, we are able to describe a digital forensics problem in a declarative and expressive way and efficiently find a solution to such problem, if it exists: a set of files or other resources that match the description of the digital forensic problem.
+The work described in this dissertation provides a declarative description of a \acf{DFP} and translates it into a \acf{CSP} which in turn passes through a \textit{Solver} that finds a solution to the initial problem, if it exists. This solution is composed by all the found files in the system that comply with the given constraints and the number of files can vary, depending on the problem, from various to none.
 
-The main goal of the system presented in paper is to allow for an easy and efficient method to search for relevant information in the contents of digital equipment.
+The approach described must allow for an easy and efficient method to search for relevant information in the contents of digital equipment.
 
-\section{Constraint Programming}
+The Solver used in this dissertation is among the fastest \ac{CSP} solvers and it was awarded multiple times~\cite{aboutChoco}~\cite{chocoSolver}. It is based on alternating constraint filtering algorithms and makes use of a search mechanisms.
 
-Constraints can be found in our day to day experiences, almost ubiquitous, representing the conditions that restrict our freedom of decision. Constraint programming is a powerful paradigm mostly used to solve combinatorial problems. We can consider it as a simple way to model real world problems but it can actually turn into a complex challenge when we want to find solutions for the problem that is being solved~\cite{Rossi2006}. 
+Part of the work presented in this dissertation has been published in a joint communication with Prof. Pedro Salgueiro, Prof. Salvador Abreu and Major Nuno Goes~\cite{2018communication}.
+
 
 \section{Digital Forensics}
 
-Digital forensics is a very important discipline in criminal investigations, where relevant evidences are stored in digital devices. The digital forensics tools have become a vital tool to ensure we can rebuild information after a cyberattack or even if we just want to analyze any type of digital equipment~\cite{Garfinkel2010}.
+Digital forensics is a very important discipline in criminal investigations, where relevant evidences are stored in digital devices. The digital forensics tools have become a vital tool to ensure we can rebuild information after a cyber-attack or even if we just want to analyze any type of digital equipment~\cite{Garfinkel2010}.
 
-\section{Digital Forensics and Constraint Programming}
+It is a very complex task to collect evidence/elements in digital equipment,  either related to criminal activity or not. Many tools nowadays are able to collect evidence or data in digital equipment, among them some stand out, including \textit{EnCase Forensics}, \textit{\acf{FTK}} and \textit{Autopsy}.
 
-\section{Experimental Evaluation}
+\section{Constraint Programming}
+
+Constraints can be found in our day to day experiences, almost ubiquitous, representing the conditions that restrict our freedom of decision. Constraint programming is a powerful paradigm mostly used to solve combinatorial problems. We can consider it as a simple way to model real world problems but it can actually turn into a complex challenge when we want to find solutions for the problem that is being solved~\cite{rossi2006handbook}. 
+
+Constraint solvers can use the most varied techniques to solve a certain problem, some examples of these are backtracking, local search and constraint propagation. This last one is considered to be the most basic operation when dealing with constraint solving and is used in almost all constraint solvers as a basic step.
+
+\section{Using Constraints on Digital Forensics}
+
+\acfp{CSP} and \acfp{DFP} are two study areas that rarely belong to the same topic of conversation. The work described in this dissertation takes this into consideration and tries to understand if modelling a \acf{DFP} using \acfp{CSP} is possible and, in case it is confirmed, if it brings any improvements in terms of processing speed and overall ease of evidence/clue discovery

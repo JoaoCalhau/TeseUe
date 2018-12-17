@@ -84,16 +84,16 @@
 %
 %	Configuracao das fontes
 %
-\setmainfont{SourceSansPro-Light.otf}[
-	UprightFont = SourceSansPro-Light.otf,
-	ItalicFont = SourceSansPro-LightIt.otf,
-	BoldFont = SourceSansPro-Regular.otf
+\setmainfont{SourceSansPro-Light}[
+	UprightFont = SourceSansPro-Light,
+	ItalicFont = SourceSansPro-LightIt,
+	BoldFont = SourceSansPro-Regular
 ]
 %
-\newfontfamily\xlightfont{SourceSansPro-ExtraLight.otf}[
-	UprightFont = SourceSansPro-ExtraLight.otf,
-	ItalicFont = SourceSansPro-ExtraLightIt.otf,
-	BoldFont = SourceSansPro-Light.otf
+\newfontfamily\xlightfont{SourceSansPro-ExtraLight}[
+	UprightFont = SourceSansPro-ExtraLight,
+	ItalicFont = SourceSansPro-ExtraLightIt,
+	BoldFont = SourceSansPro-Light
 ]
 %\newfontfamily\lightfont{Source Sans Pro}[UprightFont = {* Light}]
 %
@@ -287,10 +287,10 @@
 
   	}
 	\typeout{*** ------ LSTACRON(\@LST@ACRON)}
-	\typeout{*** ------ SUMARIO(\@TXT@SUMARIO@A)}
-	\typeout{*** ------ ABSTRACT(\@TXT@SUMARIO@B)}
-	\typeout{*** ------ PAL.CHAV(\@TXT@PALCHAVE@A)}
-	\typeout{*** ------ KEYWORDS(\@TXT@PALCHAVE@B)}
+	\typeout{*** ------ SUMARIO(\@TXT@SUMARIO@B)}
+	\typeout{*** ------ ABSTRACT(\@TXT@SUMARIO@A)}
+	\typeout{*** ------ PAL.CHAV(\@TXT@PALCHAVE@B)}
+	\typeout{*** ------ KEYWORDS(\@TXT@PALCHAVE@A)}
 }
 %
 %
@@ -444,8 +444,9 @@
 \newcommand{\@PALAVRASCHAVE}{palavra chave 1, palavra chave 2, palavra chave 3, palavra chave 4, palavra chave 5}
 \newcommand{\@KEYWORDS}{keyword 1, keyword 2, keyword 3, keyword 4, keyword 5}
 \DeclareRobustCommand{\tuePALAVRASCHAVE}[2]{%
-	\renewcommand{\@PALAVRASCHAVE}{#1}
-	\renewcommand{\@KEYWORDS}{#2}
+	\renewcommand{\@KEYWORDS}{#1}
+	\renewcommand{\@PALAVRASCHAVE}{#2}
+	
 }
 %
 %
@@ -480,8 +481,8 @@
 	\include{prefacio}
 	\include{agradecimentos}
 	\@TABELAS
-	\include{sumario}
 	\include{abstract}
+	\include{sumario}
 }
 \DeclareRobustCommand{\tuePREAMBULO}[1]{%
 	\renewcommand{\@PREAMBULO}{#1}
@@ -517,9 +518,9 @@
 %
 \newcommand{\@BIBLIOGRAFIA}{
 	%	Incluir todas as entradas na bibliografia
-	\nocite{*}
+	%\nocite{*}
 	%	Estilo das citações
-	\bibliographystyle{alpha}
+	\bibliographystyle{ieeetr}
 	%	Lista das referências
 	\bibliography{bibliografia}
 }
@@ -564,6 +565,8 @@
 		\@APENDICES
 		\backmatter
 		\@BIBLIOGRAFIA
+		%\bibliographystyle{alpha}
+        %\bibliography{bibliografia}
 		\@INDICEREMISSIVO
 		\@CONTRACAPA
 	\end{document}
@@ -589,13 +592,13 @@
 %
 %
 %
-%	tueSUMARIO
+%	tueABSTRACT
 %
 %
 %
-\newenvironment{tueSUMARIO}{
+\newenvironment{tueABSTRACT}{
 	\typeout{***}
-	\typeout{*** tueSUMARIO}
+	\typeout{*** tueABSTRACT}
 	\typeout{*** ------ SUMARIO(\@TXT@SUMARIO@A)}
 	\typeout{*** ------ PAL.CHAV(\@TXT@PALCHAVE@A)}
 	\chapter*{\@TXT@SUMARIO@A}
@@ -604,16 +607,17 @@
 }{
 	\par
 	\bigskip
-	\textbf{\@TXT@PALCHAVE@A:}~\@PALAVRASCHAVE
+	\textbf{\@TXT@PALCHAVE@A:}~\@KEYWORDS
 }
+
 %
 %
 %
-%	tueABSTRACT
+%	tueSUMARIO
 %
 %
 %
-\newenvironment{tueABSTRACT}{
+\newenvironment{tueSUMARIO}{
 	\chapter*{\@TXT@SUMARIO@B}
 	\addcontentsline{toc}{chapter}{\@TXT@SUMARIO@B}
 	\markboth{\uppercase{\@TXT@SUMARIO@B}}{}
@@ -631,12 +635,11 @@
 }{
 	\par
 	\bigskip
-	\textbf{\@TXT@PALCHAVE@B:}~\@KEYWORDS
+	\textbf{\@TXT@PALCHAVE@B:}~\@PALAVRASCHAVE
 }
 %
 %
 %
-%	tueACRONIMOS
 %
 %
 %
@@ -689,79 +692,96 @@
 % ================================================================
 %
 \DeclareRobustCommand{\@CAPA}{   % v.2013: capa uniforme, jsaias
+	\thispagestyle{empty}
 	\begin{portuges}
-		\thispagestyle{empty}
-		\vspace*{-2.1cm}
-		\begin{flushright}
-			\includegraphics[width=6cm]{teseue-logo.pdf}
-			\par
+		\begin{tabular}{lcr}
 			%
-			\vspace{1em}		
+			% pomba
 			%
-			{\Huge \textbf{\@TITULO}}
-			%
-			\par		
-			%
-			{\LARGE \@SUBTITULO}
-			%
-			\par
-			%
-			\rule{\textwidth}{1pt}
-			%
-			\par
-			\vspace{1em}
-			%
-			{\Large \textit{\@CANDIDATO}}
-			%
-			\par
-			\vspace{3em}		
-			%
-			{Tese apresentada \`{a} Universidade de \'{E}vora}\\
-			{para obten\c{c}\~{a}o do Grau de \@Grau\ em \@CURSO}\\
-			\ifbool{@comEspecialidade}{
-				{na especialidade \@ESPECIALIDADE}\\
-			}{~\\}
-			%
-			\par
-			\vspace{2em}	
-			%
-			%	Orientacao
-			%
-			\begin{tabular}{rr}%
-				\@MFORIENTADOR & \textit{\@NOMEORIENTADOR}\\%
-				\ifbool{@comSegOrientador}{%
-					\@MFSEGORIENTADOR & \textit{\@NOMESEGORIENTADOR}\\%				
-					\ifbool{@comTerOrientador}%
-						{\@MFTERORIENTADOR & \textit{\@NOMETERORIENTADOR}\\}%
-						{\\}%
-				}{~ \\ ~ \\}%
-			\end{tabular}%
-			%
-			\par%
-			\vspace{2em}
-			%	
-			\textit{Esta \@monografia\ n\~{a}o inclui as cr\'{i}ticas e sugest\~{o}es feitas pelo J\'{u}ri}
-			%
-			\par
-			\vspace{2em}
-			%
-			{\@DATA}
-			%
-			\par
-			\vspace{2em}
-			%
-			\begin{centering}
-			    \includegraphics[width=\linewidth]{\@AZULEJOS}
-			\end{centering}
-			%
-			\par
-			\vspace*{\fill}
-			%
-			{INSTITUTO DE INVESTIGA\c{C}\~{A}O E FORMA\c{C}\~{A}O AVAN\c{C}ADA}
-			%
-		\end{flushright}
+		    \vspace*{-1.5cm}\parbox[t][\textheight][t]{2.63cm}{\includegraphics[width=8em]{teseue-pomba} \\ } 
+		    & 
+		    %
+		    % tracejado vertical a esquerda
+		    %
+		    \hspace{1em}
+		  	\parbox[t][\textheight][t]{0.4cm}{
+		  		\vspace*{-3.2cm}
+		  		\begin{tikzpicture}
+		  			\foreach \y in {1, ..., 42} {
+		  				\fill[fill=uegrey] (0,\y*0.55) circle (0.05cm);
+		  			}
+		  		\end{tikzpicture}
+		  	}
+		  	& 
+		  	%
+		  	%	resumo
+		  	%
+		    \vspace*{-1.5cm}
+		    \parbox[t][0.9\textheight][t]{10.1cm}{
+		    	%
+				\vspace{-2.8cm} % recuo vertical igual ao comprimento da imagem
+				%
+				{\Large \textbf{{\color{uered} UNIVERSIDADE DE \'{E}VORA}}}\\
+				%
+				\par
+				%
+				{\large \textbf{\@ESCOLA}} \\
+				%
+				\par
+				%
+				{\large \@DEPARTAMENTO} \\
+				%
+				\par
+				\vspace*{12em}
+				%
+				{\Large \textbf{\@TITULO}} \\
+				%
+				\par			%
+				\vspace{2em}
+				%
+				{\large \textbf{\@CANDIDATO}}\\
+				%
+				\par			%
+				\vspace{4em}
+				%
+				%	Orientacao
+				%
+				\begin{tabular}{rl}%
+					Orienta\c{c}\~{a}o & \textit{\@NOMEORIENTADOR}\\%
+					\ifbool{@comSegOrientador}{%
+						& \textit{\@NOMESEGORIENTADOR}\\%				
+						\ifbool{@comTerOrientador}%
+							{& \textit{\@NOMETERORIENTADOR}\\}%
+							{\\}%
+					}{~ \\ ~ \\}%
+				\end{tabular}%
+				%
+				\par
+				\vspace{4em}
+				%
+				% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+				%
+				{\large \textbf{\@CURSO}}
+				%
+				\par
+				\vspace{2em}
+				%
+				{\normalsize \@Monografia}
+				%
+				\par
+				\vspace{6em}
+				%
+				{\small \@DATA}
+				%
+				\par
+				\vspace*{3em}
+				%
+				{\footnotesize\textit{Esta \@monografia\ n\~{a}o inclui as cr\'{i}ticas e sugest\~{o}es feitas pelo J\'{u}ri}\\}
+				%
+			}
+		\end{tabular}
 	\end{portuges}
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\newpage\hspace{1mm}\thispagestyle{empty}
 	\cleardoublepage
 }

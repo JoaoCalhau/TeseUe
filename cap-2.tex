@@ -1,66 +1,93 @@
 %!TEX root = main.tex
-\chapter{Constraint Programming}
+\chapter{Digital Forensics}
+In this chapter we will introduce the concepts of \acf{DFP} and electronic evidence. At the same time we will briefly describe the history of digital forensics and its background, the digital forensics process and some known forensic tools used in actual judicial systems.
 
 \section{Introduction}
 
-Constraint Satisfaction, in it's most basic form, consists in finding a value for each one of a set of problems where constraints specify the restrictions related to those problems.
+The collection of evidence/elements in digital equipment is a complex task, even if they aren't connected to any criminal activity. If that piece of equipment is connected to any type of computer network, with the consequent increase in digital traffic, more difficult it becomes to detect any anomalies or undesirable communications in the network. Thus, the intrusion detection systems have become a very important tool in computer network security~\cite{Salgueiro2011}. 
 
-Constraint Satisfaction Problems have been tackled by the most various methods, from automata theory to ant algorithms and are a topic of interest in many fields of computer science~\cite{Rossi2006}.
+Digital forensics is a synonym for computer forensics, but in a broader sense, it is the collection of techniques and tools used to find evidence in all digital devices instead of only computers, like in computer forensics~\cite{reith2002examination}.
 
-\section{History of Constraint Programming}
+To collect evidence or data in digital equipment, there are many tools capable of analyzing a digital forensics image. Among them, one of the most known tools is the \textit{EnCase Forensic}~\cite{EnCase}, which is a proprietary and commercial tool, used in many judicial systems. There are also widely known, open source and free access tools capable of accomplishing the same work. The \textit{\ac{FTK}}~\cite{FTK} and the \textit{Autopsy}~\cite{Autopsy} are two of them.
 
-Before understanding what constraint programming is we need to understand that Constraint Satisfaction is the process of finding a solution to a set of constraints that impose conditions that the variables must satisfy~\cite{Krzysztof2003}. A solution is found when a set of variables satisfies all constrains. These constraints and variables will be explained in deeper detail later in section~\ref{working}.
+\section{History of Digital Forensics}
 
-Constraint Satisfaction originally appeared in the field of artificial intelligence in the early 1970s. During the 1980s and 1990s constraints started being embedded into programming languages, as they were being developed, and the term constraint programing started taking form. Examples of these programming languages are \textit{Prolog} and \textit{C++}~\cite{Krzysztof2003}.
+Prior to the 1980s there wasn't a real definition of Digital Forensics, digital crimes were few, and the few that actually happened were recognized and dealt with using existing laws. Over the next few years the volume of digital crimes started to increase and laws were approved to deal with issues of copyright, privacy/harassment and child pornography~\cite{philipp2009hacking}.
 
-In artificial intelligence interest in constraint satisfaction developed into two streams, the language stream and the algorithm stream. The first stream refers to the side of Constraint Satisfaction that deals with algebraic equations, constraint statements and declarative languages, while the second stream refers to actual algorithms used to solve said constrains~\cite{Rossi2006}.
+Between the 1980s and the 1990s, the field of Digital Forensics started to grow with the growth of computer crime. This growth caused law enforcement agencies to begin establishing specialized groups, usually at the national level, to handle the technical aspects of investigations~\cite{mohay2003computer}. Many of the members of these group members were law enforcement professionals as well as computer hobbyists, which became responsible for the field's early initial research and direction~\cite{sommer2004future}.
 
-\section{Working with Constraint Programming}
-\label{working}
+By the end of the 1990s, a demand for digital evidence grew more and advanced commercial tools such as Encase~\cite{EnCase} and \ac{FTK}~\cite{FTK} were developed. This allowed analysts to examine copies of media without using any live forensics~\cite{casey2014digital}. More detailed information about these tools can be found in Section~\ref{known}.
 
-There are several definitions we have to delve into to better understand how constraint programming works. We need to fully understand what a domain and a variable is and we also need to know what a constraint is.
+From the 2000s and onwards, a need to standardize tools and procedures began to show and various bodies and agencies, in response to this need, began publishing guidelines for digital forensics~\cite{casey2014digital}. The issue of training also began receiving attention and commercial companies began to offer certification programs. It's focus also began to change, to a more internet oriented crime, particularly the risk of cyber warfare and cyberterrorism~\cite{sommer2004future}.
 
-\subsection{Variable}
-\label{variable}
+\section{Digital Forensics Problem (DFP)}
 
-A variable has several known definitions, the one we want is in the field of mathematics. According to mathematics a variable is a symbol, usually an alphabetic character, and it represents a number, known as the value of the variable, which can be arbitrary, not fully specified or unknown~\cite{Menger1954}.
+Electronic Evidence or digital evidence is any probative information stored or transmitted in digital form~\cite{casey2011digital}. Such evidence is acquired when data or digital physical items are collected and stored for examination purposes~\cite{ballou2010electronic}.
 
-\subsection{Domain}
+Each different case of digital forensics represents a different \ac{DFP}. It all depends on the electronic evidence pertinent to the case in question and the subsequent way that the evidence is treated and processed. The problem with this process is that digital forensics is still a fairly young subject~\cite{reith2002examination}, and new investigation procedures are emerging everyday~\cite{allen2005computer}. Add to this the fact that new digital devices are constantly being created and envisioned, always evolving, presenting this type of electronic evidence in court gives origin to several unique problems when compared to those that arise with other types of evidence. These problems, as well as the processes taken to avoid them, are more detailed in Section~\ref{process}.
 
-A domain, like the variable, also has various known definitions, however the one that interests us here is in the field of mathematical analysis. 
+\section{The Digital Forensic Process}
+\label{process}
 
-According to Hans Hahn, an open set is connected if it cannot be expressed as the sum of two open sets. An open connected set is called a domain~\cite{Hahn1921} 
+To present electronic evidence in court, special procedures must be taken that differ from the normal ones used for other types of evidence. This is due to the very specific nature of electronic evidence, which is fragile. By this, we mean it can be easily altered, damaged or destroyed by improper handling or improper examination. However, a universal set of forensic procedures doesn't exist, as it always differs in some parts from point of view to point of view. According to Susan Ballou's point of view, electronic evidence needs to pass through 4 distinct phases: collection, examination, analysis and reporting~\cite{ballou2010electronic}.
 
-In our case, a domain is an open connected set of variables.
+The collection phase involves all the search, recognition, collection and documentation of electronic evidence~\cite{ballou2010electronic}, like extraction of digital images from electronic devices. This step is very important since these collected evidences are what lie as the foundation of the whole process.
 
-\section{Approaches to Constraint Programming}
+The examination phase involves the verification of the integrity and authenticity of the evidence collected in the previous phase. It also involves surveying all of the evidence to determine future procedures and some pre-processing to salvage deleted data, handle special files, filter irrelevant data and extract embedded metadata. This part of the examination is critical~\cite{casey2009handbook}. It is also very important to make sure all items of evidence can be traced form the crime scene to the courtroom, and everywhere in between. This is known as Chain of Custody and if it is ever broken it can invalidate the whole forensic investigation process and not make it presentable in court~\cite{ryder2002computer}.
 
-In constraint programming, we usually have a set of variables, which takes values from an initial domain, to which constraints are applied in order to reduce its domain, and thus reach a solution. Once a constraint is placed on the system it cannot violate another constraint previously applied. This way, we can express the requirements of the possible values of the variables~\cite{Pearson1997}.
+As mentioned before, procedures always change a little according to the different points of view, and according to Eoghan Casey and Curtis W. Rose the analysis phase can be broken down further into 3 phases: form an hypothesis to explain the observations, evaluate the hypothesis and draw conclusions. From the examined data, normally, various hypothesis can be drawn and from these hypothesis various predictions can flow naturally~\cite{casey2009handbook}. Once a likely explanation has been established, the forensic practitioners can move on to the last phase.
 
-Constraint satisfaction problems are typically solved with the help of solvers. These solvers are essentially search algorithms, usually based on backtracking techniques\cite{Knuth1997}, constraint propagation \cite{Lecoutre2010} or local search \cite{Dechter2003}. 
+The final phase, the reporting phase, involves a written report that outlines the examination process and the data recovered~\cite{ballou2010electronic} to be handed to someone on a higher hierarchy than the practitioner for validation~\cite{casey2009handbook}.
 
-\subsection{Backtracking}
+After the due validation of the report, the findings may finally be presented to court. Sometimes an examiner may need to testify about the conduct of the examination and the validity of the methods and procedures~\cite{ballou2010electronic}, the validity of the tools used during examination and analysis phases~\cite{casey2009handbook} and the qualifications of the examiner himself~\cite{ballou2010electronic}.
 
-Backtracking is a search method that incrementally finds possible candidates to solve the problem. At the same time it removes the candidates that can not be used as a valid solution to the problem~\cite{Knuth1997}. One of the most used examples for this type of search method is the n-queens puzzle, where a set of $n$ queens should be organized, in a $n \times n$ chess board, in such a way that none of the queens can attack each other. Any partial solution that contains two queens that can attack each other is abandoned immediately.
+\section{Digital Forensics Notorious Cases}
 
-\subsection{Constraint Propagation}
+This section looks to identify some of the most notorious criminal investigation cases in which the main technique used to solve said cases was Digital Forensics.
 
-Constraint propagation starts by reducing the variable's domain, strengthening or creating new constraints, reducing the search space, leading to a problem that is easier to solve. Since this algorithm only reduces the search space of the problem variables. After completion, there is still the need to use another algorithm to solve the problem, which is now converted into a simpler problem by the propagators \cite{Lecoutre2010}. 
+\subsection{The BTK Killer}
 
-\subsection{Local Search}
+One of the most notorious cases that were "cracked" with digital forensics, is the case of the American serial killer known as the BTK Killer or the BTK Strangler~\cite{siegel1998criminology}. Dennis Lynn Rader, known as the BTK Killer had the infamous signature of binding, torturing and killing it's victims (hence "BTK"). And he was particularly known for sending taunting letters to the police and newspapers describing in detail his crimes. Rader took a decade-long hiatus in 1991 and resumed his criminal activities in 2004 where he was caught because of metadata embedded in a deleted Microsoft Word document on the last floppy disk he sent to the police~\cite{girard2017criminalistics}. The metadata contained Christ Lutheran Church and the document was marked as last modified by "Dennis"~\cite{bardsley2005btk}.
 
-Local search is an incomplete search method to find solutions for a problem. It consists in, iteratively, and with the help of previously defined heuristics, assigning values to the problem variables until all the constraints are satisfied. At each step of the iteration, the values of the variables are updated to values \emph{near} the previous value. The algorithm also knows the cost associated with the assignment of specific values to variables, allowing to check if a candidate solution has with a pre-defined cost~\cite{Dechter2003}.
+\subsection{Alicia Kozakiewicz Kidnapping}
 
-\section{Known Tools and Other Approaches}
+Alicia Kozakiewicz is the founder of the Alicia project, an advocacy group designed to raise awareness about online predators, abduction and child sexual exploitation~\cite{alicia2013survivor}. At the age of 13 she was the victim of an internet luring and child abduction that received widespread media attention~\cite{nicole2007alicia}. Alicia corresponded online to someone she thought to be a boy of 13 years of age, much like her, that was actually Scott Tyree a 38 year old man who lived in Virginia. He approached her in a Yahoo chat room and over the course of nearly a year, Tyree befriended Alicia and established an emotional connection with her~\cite{nicole2007alicia}. In 2002, Tyree lured her into meeting him and coerced her into his vehicle and drove her back to his home, where he held her captive in his basement where he shackled, raped and tortured Alicia all of this while broadcasting it online, via streaming video~\cite{nicole2007alicia}. Luckily a viewer recognized Alicia from news stories and contacted the FBI anonymously and provided them with a Yahoo username~\cite{alicia2013survivor}. From this username the FBI was able to trace Tyree's IP address and then his street address, and thus saving Alicia later arresting Tyree at his workplace.
 
-\subsection{Choco}
+% Maybe look for another example
 
-Choco is an open source and free access library dedicated to constraint programming. It is written in Java and supports several types of variables, including Integers, Booleans, Sets and Reals. It also supports several types of constraints such as AllDifferent and Count, configurable search algorithms and conflict explaining. The first version of Choco was developed in the early 2000s. A few years later, Choco 2 was developed and declared a success in the academic and industrial world. Since then, Choco has been completely re-written and in 2012 the third version of Choco was launched. The current version comes with a simpler API and is denominated Choco 4~\cite{chocoSolver}.
+\section{Known Forensics Tools}
+\label{known}
 
-\subsection{Gecode}
+In this section we introduce a few well known forensics tools and a brief description of them.
 
-Gecode is a free access, open source, portable, accessible and efficient programming environment used to develop systems and applications based on restrictions. Gecode, much like Choco, supports various types of variables and restrictions, among them are Integers, Float and Sets. These variables are used to model problems that are then solved with the help of constraint propagators and search algorithms \cite{MPG:M:5.1.0}~\cite{gecode}.
+\subsection{EnCase}
 
-\subsection{Google OR-Tools}
+EnCase is a piece of technology within a suite of digital investigation tools by Guidance Software. EnCase is traditionally used in forensics to recover evidence from seized hard drives, it allows the investigator to conduct in-depth analysis of user files to collect evidence, such as documents, pictures, internet history and Windows Registry Information. Along with this product, Guidance Software also offers EnCase training and certification.
 
-Although Choco and Gecode are two of the most widely used libraries, there are also other new tools, such as the Google OR-Tools~\cite{ORTools}. Google Optimization Tools or OR-Tools is an interface that puts together several linear programming solver and that counts on the use of several types of algorithms such as search algorithms and graph algorithms. What this library has that is so noteworthy is the fact that it doesn't let itself be bound by one language. Although implemented in C++, it can be used in other languages like Python, C\# or Java.
+EnCase is a paid and proprietary product that has been used in various court systems, such as in the cases of the BTK Killer and the murder of Danielle van Dam~\cite{taub2006deleting}.
+
+\subsection{Forensic Toolkit}
+
+\acf{FTK} is a free and proprietary computer forensics software made by AccessData, that scans a hard drive looking for various types of information, such as deleted emails and text strings~\cite{dixon2005overview}. The toolkit also comes with a standalone disk imaging software called FTK Imager that can be used to save hard disk images in one file, or several and calculate MD5 hash values to confirm the integrity of said disk. The resulting image file(s) can be saved in various formats, that vary from ISO to DD raw.
+
+\subsection{Computer Online Forensic Evidence Extractor}
+
+\acf{COFEE} is a forensics toolkit developed by Microsoft, to help computer forensic investigators extract evidence from a Windows computer. It can be installed on a USB flash drive or other external disk drive and used from there. It acts as an automated forensic tool during a live analysis. \ac{COFEE} and \ac{COFEE} online technical support, is free for law enforcement agencies~\cite{microsoft2008cofee}.
+
+Unfortunately, in 2009, copies of Microsoft \ac{COFEE} were leaked onto various torrent websites. Analysis of the leaked tool indicated that it was largely a wrapper around other utilities previously available to investigators~\cite{cofee2009leaked}.
+
+\subsection{The Sleuth Kit}
+
+\acf{TSK} is a free and open-source C library and a collection of tools that allows the analysis of disc images and restore files from them. The \ac{TSK} framework is what Autopsy~\cite{Autopsy}, the forensics tool mentioned earlier, uses in it's background jobs. The \ac{TSK} framework allows the user to incorporate additional modules so he can analyze file contents and build automated systems. In addition, the library can be embedded in larger digital forensics tools and command line tools can be used directly to find any kind of proof~\cite{tsk}. 
+
+Of all the tools \ac{TSK} has to offer, the most interesting one is the Sorter, which analyzes a file system and organizes the file by extension. In addition, it provides us details about the organized files, such as the file \INODE number. Sorter can also use a separate hash database to ignore files that are known to be good, such as Dynamic-Link Libraries, or dlls, of the windows file system or even know applications.
+
+Another interesting couple of tools in the \ac{TSK} suite are the \textit{FLS} and \textit{Mactime} modules. \textit{FLS} lists the files and directory names in the image passed as input~\cite{BrianFls} while \textit{Mactime} creates an ASCII time line of file activity based on the bodyfile passed as argument via the flag "-b"~\cite{BrianMactime}. \textit{FLS} can also display the names of recently deleted files for a directory using the given \INODE and it can also extract a bodyfile with all sorts of information about all \INODES found. This last part is interesting because the bodyfile is a slash separated file containing information about every file in the system, which means one can take that file and pass it through mactime. Mactime takes the slash separated file and converts it in a comma separated file with time related information, ordered by \INODE number.
+
+Finally, to recover lost files, we can use a rather handy tool called \textit{ICAT}~\cite{BrianIcat}. This tool opens the image passed as argument and copies the file, specified with the given \INODE number, to standard output. This can be particularly useful when used with \textit{FLS} to extract all the \INODE numbers we want to recover.
+
+\subsection{Foremost and PhotoRec}
+
+Foremost is a forensic data recovery program for Linux and it is used to recover lost files by header, footer or data structures. This program achieves this by a process known as file carving, which is the process of reassembling computer files from fragments in the absence of file system metadata~\cite{foremostUbuntu}. 
+
+PhotoRec is a free and open-source utility software and much like Foremost, also uses the file carving process. However, it is designed to recover lost files from various digital camera memory~\cite{photoRec}.
