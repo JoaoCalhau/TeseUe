@@ -84,16 +84,16 @@
 %
 %	Configuracao das fontes
 %
-\setmainfont{SourceSansPro-Light}[
-	UprightFont = SourceSansPro-Light,
-	ItalicFont = SourceSansPro-LightIt,
-	BoldFont = SourceSansPro-Regular
+\setmainfont{SourceSansPro-Light.otf}[
+	UprightFont = SourceSansPro-Light.otf,
+	ItalicFont = SourceSansPro-LightIt.otf,
+	BoldFont = SourceSansPro-Regular.otf
 ]
 %
-\newfontfamily\xlightfont{SourceSansPro-ExtraLight}[
-	UprightFont = SourceSansPro-ExtraLight,
-	ItalicFont = SourceSansPro-ExtraLightIt,
-	BoldFont = SourceSansPro-Light
+\newfontfamily\xlightfont{SourceSansPro-ExtraLight.otf}[
+	UprightFont = SourceSansPro-ExtraLight.otf,
+	ItalicFont = SourceSansPro-ExtraLightIt.otf,
+	BoldFont = SourceSansPro-Light.otf
 ]
 %\newfontfamily\lightfont{Source Sans Pro}[UprightFont = {* Light}]
 %
